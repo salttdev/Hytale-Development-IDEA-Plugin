@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "dev.saltt"
-version = "1.0-SNAPSHOT"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -68,5 +68,15 @@ intellijPlatform {
             sinceBuild = "243"
             untilBuild = provider { null }
         }
+    }
+
+    signing {
+        certificateChainFile = file(".keys/chain.crt")
+        privateKeyFile = file(".keys/private.pem")
+        password = providers.gradleProperty("signingPassword")
+    }
+
+    publishing {
+        token = providers.gradleProperty("intellijPlatformPublishingToken")
     }
 }
