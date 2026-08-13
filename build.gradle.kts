@@ -1,3 +1,6 @@
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version "2.1.20"
@@ -5,7 +8,7 @@ plugins {
 }
 
 group = "dev.saltt"
-version = "1.0.1"
+version = "1.0.7"
 
 repositories {
     mavenCentral()
@@ -19,23 +22,30 @@ dependencies {
     intellijPlatform {
         intellijIdea("2025.2.4")
 
-        testFramework(
-            org.jetbrains.intellij.platform.gradle.TestFrameworkType.Platform
-        )
+        testFramework(TestFrameworkType.Platform)
 
         bundledPlugin("com.intellij.java")
     }
 }
 
 intellijPlatform {
+    buildSearchableOptions = false
+
     pluginConfiguration {
         ideaVersion {
-            sinceBuild = "252.25557"
+            sinceBuild = "252"
+            untilBuild = provider { null }
         }
+    }
 
-        changeNotes = """
-            Initial version
-        """.trimIndent()
+    signing {
+        certificateChainFile = file(".keys/chain.crt")
+        privateKeyFile = file(".keys/private.pem")
+        password = providers.gradleProperty("signingPassword")
+    }
+
+    publishing {
+        token = providers.gradleProperty("intellijPlatformPublishingToken")
     }
 }
 
@@ -56,27 +66,6 @@ tasks {
 
 kotlin {
     compilerOptions {
-        jvmTarget.set(
-            org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
-        )
-    }
-}
-
-intellijPlatform {
-    pluginConfiguration {
-        ideaVersion {
-            sinceBuild = "243"
-            untilBuild = provider { null }
-        }
-    }
-
-    signing {
-        certificateChainFile = file(".keys/chain.crt")
-        privateKeyFile = file(".keys/private.pem")
-        password = providers.gradleProperty("signingPassword")
-    }
-
-    publishing {
-        token = providers.gradleProperty("intellijPlatformPublishingToken")
+        jvmTarget.set(JvmTarget.JVM_21)
     }
 }
