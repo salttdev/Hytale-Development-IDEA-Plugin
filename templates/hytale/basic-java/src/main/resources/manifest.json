@@ -1,0 +1,15 @@
+{
+    "Group": "{{GROUP}}",
+    "Name": "{{PROJECT_NAME}}",
+    "Version": "1.0.0",
+    "Description": "{{DESCRIPTION}}",
+    "Authors": [
+        {
+            "Name": "{{AUTHOR_NAME}}"
+        }
+    ],
+    "DisabledByDefault": false,
+    "IncludesAssetPack": false,
+    "Main": "{{PACKAGE_NAME}}.{{MAIN_CLASS_NAME}}",
+    "ServerVersion": "*"
+}

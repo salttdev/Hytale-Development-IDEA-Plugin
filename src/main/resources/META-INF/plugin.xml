@@ -1,0 +1,41 @@
+<idea-plugin>
+
+    <id>dev.saltt.hytale-project-setup</id>
+
+    <name>Hytale Project Setup</name>
+
+    <vendor url="https://github.com/salttdev">Salttdev</vendor>
+
+    <description><![CDATA[
+  <p>
+    Ready-to-run Hytale mod projects, straight from the project wizard.
+  </p>
+
+  <ul>
+    <li><b>No local Hytale install</b> required</li>
+    <li><b>Shadow JAR</b> packaging preconfigured</li>
+    <li><b>Dev server</b> built in, runs from the IDE</li>
+    <li><b>Clean Gradle setup</b> — no commands needed</li>
+    <li><b>Java and Kotlin</b>, with optional template config</li>
+  </ul>
+
+  <p>
+    <b>File → New → Project → Hytale</b>
+  </p>
+
+  <p>
+    Not affiliated with Hypixel Studios.
+  </p>
+]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+
+        <newProjectWizard.generator
+                implementation="dev.saltt.hytaleprojectgenerator.HytaleProjectWizard"/>
+
+    </extensions>
+
+</idea-plugin>
