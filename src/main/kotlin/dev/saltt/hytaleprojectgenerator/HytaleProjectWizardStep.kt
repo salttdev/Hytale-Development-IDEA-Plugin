@@ -3,9 +3,11 @@ package dev.saltt.hytaleprojectgenerator
 import com.intellij.ide.wizard.AbstractNewProjectWizardStep
 import com.intellij.ide.wizard.NewProjectWizardStep
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.ui.validation.CHECK_NON_EMPTY
 import com.intellij.ui.dsl.builder.Panel
 import com.intellij.ui.dsl.builder.bindText
 import com.intellij.ui.dsl.builder.columns
+import com.intellij.ui.dsl.builder.textValidation
 
 class HytaleProjectWizardStep(
     parent: NewProjectWizardStep
@@ -19,6 +21,9 @@ class HytaleProjectWizardStep(
 
     private val authorProperty =
         propertyGraph.property("Author")
+
+    private val mainClassProperty =
+        propertyGraph.property("Main")
 
     private val languageProperty =
         propertyGraph.property(ProjectLanguage.JAVA)
@@ -47,6 +52,30 @@ class HytaleProjectWizardStep(
                     .columns(30)
             }
 
+            row("Main class:") {
+                textField()
+                    .bindText(mainClassProperty)
+                    .columns(30)
+                    .textValidation(CHECK_NON_EMPTY)
+                    .validationOnInput {
+                        val value = it.text.trim()
+
+                        when {
+                            value.isEmpty() ->
+                                null
+
+                            !value.first().isJavaIdentifierStart() ->
+                                error("Class name must start with a letter or underscore")
+
+                            !value.all { c -> c.isJavaIdentifierPart() } ->
+                                error("Class name may only contain letters, digits and underscores")
+
+                            else ->
+                                null
+                        }
+                    }
+            }
+
             row("Language:") {
                 segmentedButton(ProjectLanguage.entries.toList()) {
                     text = it.displayName
@@ -67,6 +96,7 @@ class HytaleProjectWizardStep(
             group = groupProperty.get(),
             description = descriptionProperty.get(),
             authorName = authorProperty.get(),
+            mainClassName = mainClassProperty.get().trim(),
             language = languageProperty.get(),
             generateConfig = generateConfigProperty.get()
         )

@@ -5,7 +5,6 @@ import com.intellij.ide.wizard.GeneratorNewProjectWizard
 import com.intellij.ide.wizard.NewProjectWizardBaseStep
 import com.intellij.ide.wizard.NewProjectWizardStep
 import com.intellij.ide.wizard.RootNewProjectWizardStep
-import com.intellij.icons.AllIcons
 import com.intellij.ide.wizard.NewProjectWizardChainStep.Companion.nextStep
 import javax.swing.Icon
 
@@ -18,7 +17,7 @@ class HytaleProjectWizard : GeneratorNewProjectWizard {
         get() = "Hytale"
 
     override val icon: Icon
-        get() = AllIcons.Nodes.Module
+        get() = HytaleIcons.Hytale
 
     override val ordinal: Int
         get() = 100
