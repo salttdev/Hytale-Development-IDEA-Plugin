@@ -118,9 +118,6 @@ Output lands in `build/libs/`.
 ## Dev Server
 
 Edit the `devserver` directory to configure the development server or add other mods to it.
-Environment variables passed into the dev server are configurable in `build.gradle.kts` under `devServerEnv`.
-> [!IMPORTANT]
-> It's not recommended to add any key based env vars here.
 
 `devServer` builds your mod and includes it in the server's runtime, so there's no separate build step.
 
