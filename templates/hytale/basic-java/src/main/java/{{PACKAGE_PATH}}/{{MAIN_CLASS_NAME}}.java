@@ -17,17 +17,17 @@ public class {{MAIN_CLASS_NAME}} extends JavaPlugin {
 
     @Override
     protected void setup() {
-        LOGGER.at(Level.INFO).log("[Template] Setting up...");
-        LOGGER.at(Level.INFO).log("[Template] Setup complete!");
+        LOGGER.at(Level.INFO).log("[{{PROJECT_NAME}}] Setting up...");
+        LOGGER.at(Level.INFO).log("[{{PROJECT_NAME}}] Setup complete!");
     }
 
     @Override
     protected void start() {
-        LOGGER.at(Level.INFO).log("[Template] Started!");
+        LOGGER.at(Level.INFO).log("[{{PROJECT_NAME}}] Started!");
     }
 
     @Override
     protected void shutdown() {
-        LOGGER.at(Level.INFO).log("[Template] Shutting down...");
+        LOGGER.at(Level.INFO).log("[{{PROJECT_NAME}}] Shutting down...");
     }
 }

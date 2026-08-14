@@ -5,7 +5,7 @@
 A Hytale server mod built with Java.
 
 > [!NOTE]
-> This project requires **JDK 25 or newer**.
+> This project requires **JDK 25**.
 
 ## Gradle Tasks
 
@@ -24,7 +24,7 @@ Run them from the Gradle tool window under **Template**, or from the terminal:
 ```
 
 > [!TIP]
-> You can change the name of the task group in `build.gradle.kts` under `gradleGroup`
+> You can change the name of the task group in `build.settings.kts` under `gradleGroup`
 
 > [!TIP]
 > It is recommended to change `ServerVersion` in your `manifest.json` from `"*"` to your target Hytale server version.
@@ -44,6 +44,9 @@ tasks.shadowJar {
 ```
 
 Output lands in `build/libs/`.
+
+> [!IMPORTANT]
+> The Java standard library is bundled into your Shadow JAR by default.
 
 ## Dev Server
 

@@ -13,15 +13,15 @@ init: JavaPluginInit
         HytaleLogger.forEnclosingClass()
 
     override fun setup() {
-        logger.at(Level.INFO).log("[Template] Setting up...")
-        logger.at(Level.INFO).log("[Template] Setup complete!")
+        logger.at(Level.INFO).log("[{{PROJECT_NAME}}] Setting up...")
+        logger.at(Level.INFO).log("[{{PROJECT_NAME}}] Setup complete!")
     }
 
     override fun start() {
-        logger.at(Level.INFO).log("[Template] Started!")
+        logger.at(Level.INFO).log("[{{PROJECT_NAME}}] Started!")
     }
 
     override fun shutdown() {
-        logger.at(Level.INFO).log("[Template] Shutting down...")
+        logger.at(Level.INFO).log("[{{PROJECT_NAME}}] Shutting down...")
     }
 }

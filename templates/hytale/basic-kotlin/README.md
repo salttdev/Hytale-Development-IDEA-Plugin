@@ -5,7 +5,7 @@
 A Hytale server mod built with Kotlin.
 
 > [!NOTE]
-> This project requires **JDK 25 or newer**.
+> This project requires **JDK 25**.
 
 ## Gradle Tasks
 
