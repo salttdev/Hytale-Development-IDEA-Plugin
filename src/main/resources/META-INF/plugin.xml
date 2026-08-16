@@ -4,6 +4,8 @@
 
     <name>Hytale Project Setup</name>
 
+    <version>1.1.1</version>
+
     <vendor url="https://github.com/salttdev">Salttdev</vendor>
 
     <description><![CDATA[
@@ -28,14 +30,18 @@
   </p>
 ]]></description>
 
+    <change-notes><![CDATA[
+  <ul>
+    <li>Expanded compatibility to additional JetBrains IDEs.</li>
+    <li>Removed the Java plugin dependency from the project wizard.</li>
+  </ul>
+]]></change-notes>
+
     <depends>com.intellij.modules.platform</depends>
-    <depends>com.intellij.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-
         <newProjectWizard.generator
                 implementation="dev.saltt.hytaleprojectgenerator.HytaleProjectWizard"/>
-
     </extensions>
 
 </idea-plugin>
